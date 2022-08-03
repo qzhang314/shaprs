@@ -176,8 +176,7 @@ alignStrands = function(inputData, A1.x ="A1.x", A2.x ="A2.x", A1.y ="A1.y", A2.
 #' blendedSumstats = shaPRS_blend_overlap(proximal, adjunct, blendingFactors)
 #'
 #' @export
-shaPRS_blend_overlap = function(proximal, adjunct, blendingFactors, rho = 0, 
-                                = T) {
+shaPRS_blend_overlap = function(proximal, adjunct, blendingFactors, rho = 0, discardAmbiguousSNPs = T) {
   # cast as numeric
   proximal = RemoveNonNumerics(proximal)
   adjunct = RemoveNonNumerics(adjunct)
