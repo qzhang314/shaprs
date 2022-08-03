@@ -32,7 +32,7 @@ shaPRS_adjust = function(inputData, rho = 0, thresholds =  vector(), discardAmbi
   inputData$Beta_A = as.numeric(as.character(inputData$Beta_A ))
   inputData$Beta_B = as.numeric(as.character(inputData$Beta_B ))
 
-  inputData = alignStrands(inputData, discardAmbiguousSNPs)
+  inputData = alignStrands(inputData, discardAmbiguousSNPs=discardAmbiguousSNPs)
 
 
   # 0. Reverse effect sizes alleles
