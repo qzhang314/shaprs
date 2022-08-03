@@ -176,7 +176,8 @@ alignStrands = function(inputData, A1.x ="A1.x", A2.x ="A2.x", A1.y ="A1.y", A2.
 #' blendedSumstats = shaPRS_blend_overlap(proximal, adjunct, blendingFactors)
 #'
 #' @export
-shaPRS_blend_overlap = function(proximal, adjunct, blendingFactors, rho = 0, discardAmbiguousSNPs = T) {
+shaPRS_blend_overlap = function(proximal, adjunct, blendingFactors, rho = 0, 
+                                = T) {
   # cast as numeric
   proximal = RemoveNonNumerics(proximal)
   adjunct = RemoveNonNumerics(adjunct)
@@ -186,7 +187,7 @@ shaPRS_blend_overlap = function(proximal, adjunct, blendingFactors, rho = 0, dis
   adjunctPheno_blending = merge(adjunctPheno,blendingFactors, by.x = "SNP", by.y = "SNP")
 
 
-  adjunctPheno_blending = alignStrands(adjunctPheno_blending, discardAmbiguousSNPs)
+  adjunctPheno_blending = alignStrands(adjunctPheno_blending, discardAmbiguousSNPs = discardAmbiguousSNPs)
 
   # 2. Align PheB/B alleles
   misalignedAlleleIndices = which( as.character(adjunctPheno_blending$A1.x) != as.character(adjunctPheno_blending$A1.y) ) # compare as character, as if we have non-SNPs with different alleles factors will break
