@@ -239,6 +239,9 @@ shaPRS_blend_overlap = function(proximal, adjunct, blendingFactors, rho = 0, dis
 
 
 #' Calculate rho to be used in shaPRS_adjust()
+#' When the number of overlapped samples (both cases and controls) between studies is unknown or hard
+#' to figure out, could also use intercept estimated from LDSC as rho. In theory, they are same
+#' see details in Supplentary Note of https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4797329/#SD1
 #'
 #' Convenience function to estimate the correlation between  two studies with overlapping controls
 #' for more details see:
@@ -246,6 +249,7 @@ shaPRS_blend_overlap = function(proximal, adjunct, blendingFactors, rho = 0, dis
 #' ncbi.nlm.nih.gov/pmc/articles/PMC2790578
 #'
 #' @param nkl0 number of controls overlapping between studies
+#' @param nkl1 number of cases overlapping between studies
 #' @param nk1 number of cases in study k
 #' @param nk0 number of controls in study k
 #' @param nl1 number of cases in study l
@@ -253,15 +257,16 @@ shaPRS_blend_overlap = function(proximal, adjunct, blendingFactors, rho = 0, dis
 #' @return returns real value of the approximate correlation
 #'
 #' @examples
-#' rho = shaPRS_rho(nkl0 = 9492,nk1 = 3810, nk0= 9492, nl1= 3765,nl0= 9492)
+#' rho = shaPRS_rho(nkl0 = 9492,nkl1 = 100,nk1 = 3810, nk0= 9492, nl1= 3765,nl0= 9492)
 #'
 #' @export
-shaPRS_rho = function(nkl0,nk1, nk0, nl1,nl0) {
+shaPRS_rho = function(nkl0,nkl1,nk1, nk0, nl1,nl0) {
   nk=nk1+nk0 # total number indis in k
   nl= nl1+nl0 # total number of indis in l
-  approx_cor= (nkl0 * sqrt(nk1*nl1 / (nk0*nl0) )   ) / sqrt(nk*nl)
+  approx_cor= (nkl0 * sqrt(nk1*nl1 / (nk0*nl0) ) + nkl1 * sqrt(nk0*nl0 / (nk1*nl1) )  ) / sqrt(nk*nl)
   return(approx_cor )
 }
+
 
 
 #' Generic inverse variance meta analysis
