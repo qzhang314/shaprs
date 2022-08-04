@@ -1,7 +1,7 @@
 #' Create lFDR corrected Q-test statistics for each SNP
 #'
 #' it performs:
-#' (1) modified Cochran's Q-test which optionally adjusts for overlapping controls
+#' (1) modified Cochran's Q-test which optionally adjusts for overlapping controls and cases
 #' (2) lFDR estimation on the p-values from the above Cochran's Q-test
 #' (3) lists SNPs that fail the heterogeneity test at specified thresholds (optional)
 #'
