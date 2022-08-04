@@ -243,7 +243,7 @@ shaPRS_blend_overlap = function(proximal, adjunct, blendingFactors, rho = 0, dis
 #' to figure out, could also use intercept estimated from LDSC as rho. In theory, they are same
 #' see details in Supplentary Note of https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4797329/#SD1
 #'
-#' Convenience function to estimate the correlation between  two studies with overlapping controls
+#' Convenience function to estimate the correlation between  two studies with overlapping controls and cases
 #' for more details see:
 #' Lin et al. 'Meta-Analysis of Genome-wide Association Studies with Overlapping Subjects' (2009
 #' ncbi.nlm.nih.gov/pmc/articles/PMC2790578
