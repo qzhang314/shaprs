@@ -58,11 +58,13 @@ shaPRS_adjust = function(inputData, rho = 0, thresholds =  vector(), discardAmbi
   if (length(thresholds) > 0) {
     for (i in 1:length(thresholds)) {
       currentThreshold=thresholds[i]
-      sigSNPs = lFDRTable[which(lFDRTable$lfdr_qvals <currentThreshold),]
-
+      #sigSNPs = lFDRTable[which(lFDRTable$lfdr_qvals <currentThreshold),]
+      sigSNPs = lFDRTable[which(lFDRTable$lFDR <currentThreshold),]
+      
       # SNPs which are heterogeneous, will be sourced from the proximaltpye
       CompositePheno = inputData # start from the composite pheno
-      hard_threshold_results[[i]] = sigSNPs$inputData.SNP
+      #hard_threshold_results[[i]] = sigSNPs$inputData.SNP
+      hard_threshold_results[[i]] = sigSNPs$SNP
     }
   }
 
